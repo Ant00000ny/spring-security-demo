@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: spring-security-demo
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+
+logging:
+  level:
+    root: info
+
+
