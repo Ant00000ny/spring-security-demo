@@ -37,8 +37,9 @@ object JwtUtils {
         return token
     }
 
-    fun parseJwt(token: String): Result<Jws<Claims>> = runCatching {
-        Jwts.parserBuilder()
+    @Throws(Exception::class)
+    fun parseJwt(token: String): Jws<Claims> {
+        return Jwts.parserBuilder()
             .setSigningKey(JWT_KEY)
             .build()
             .parseClaimsJws(token)
