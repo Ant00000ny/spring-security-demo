@@ -19,4 +19,14 @@ class CommonController {
         return ResponseEntity.ok()
             .body(ResultVo.success("hello $username"))
     }
+
+    @GetMapping("/testRole")
+    fun testRole(): ResponseEntity<ResultVo<Unit>> {
+        val username = SecurityContextHolder.getContextHolderStrategy()
+            .context
+            .authentication
+            .name
+        return ResponseEntity.ok()
+            .body(ResultVo.success("hello $username"))
+    }
 }
