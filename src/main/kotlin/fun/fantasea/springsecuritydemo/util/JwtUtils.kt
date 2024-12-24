@@ -15,6 +15,7 @@ import kotlin.time.toJavaDuration
 
 
 object JwtUtils {
+    private val EXPIRATION_TIME = 5.minutes.toJavaDuration()
     /**
      * default jwt key
      */
@@ -30,7 +31,7 @@ object JwtUtils {
         val token = Jwts.builder()
             .setSubject(username)
             .setIssuedAt(Date.from(now))
-            .setExpiration(Date.from(now + 5.minutes.toJavaDuration()))
+            .setExpiration(Date.from(now + EXPIRATION_TIME))
             .signWith(JWT_KEY, SignatureAlgorithm.HS256)
             .claim("testclaim", "testvalue")
             .compact()
